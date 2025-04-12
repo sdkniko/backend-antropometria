@@ -55,6 +55,11 @@ mongoose.connect(MONGODB_URI, {
 .then(() => logger.info('Connected to MongoDB'))
 .catch(err => logger.error('MongoDB connection error:', err));
 
+// Add a simple root API route for testing
+app.get('/api', (req, res) => {
+  res.json({ message: 'Backend API is running!' });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
